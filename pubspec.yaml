@@ -1,5 +1,5 @@
 name: tr_treeview
-description: "A new Flutter project."
+description: "A Tractian app to show assets."
 publish_to: 'none'
 version: 0.1.0
 
@@ -10,6 +10,12 @@ dependencies:
   flutter:
     sdk: flutter
 
+  cupertino_icons: ^1.0.6
+
+  get: ^4.6.6
+  http: ^1.2.1
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -17,3 +23,11 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/asset.png
+    - assets/bolt_outline.png
+    - assets/bolt_fill_green.png
+    - assets/component.png
+    - assets/location.png
+    - assets/tractian_logo.png
+    - assets/company.png
