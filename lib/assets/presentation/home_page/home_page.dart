@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
                 ? const CupertinoActivityIndicator()
                 : ListView(
                     padding: const EdgeInsets.only(top: 8.0),
-                    children: const [],
+                    children: controller.companiesButtonsList,
                   ),
           );
         },
