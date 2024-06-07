@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
+
 import 'package:get/get.dart';
+
 import 'package:tr_treeview/assets/core/design_system/tractian_colors.dart';
-import 'package:tr_treeview/assets/presentation/home/home_controller.dart';
+import 'package:tr_treeview/assets/presentation/home_page/home_controller.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

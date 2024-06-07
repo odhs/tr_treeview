@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:tr_treeview/assets/presentation/home/home_controller.dart';
+import 'package:tr_treeview/assets/presentation/home_page/home_controller.dart';
 
 class HomeBinding extends Bindings {
   @override

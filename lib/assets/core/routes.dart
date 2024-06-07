@@ -1,7 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/get_navigation/src/routes/transitions_type.dart';
-import 'package:tr_treeview/assets/presentation/assets/assets_page.dart';
-import 'package:tr_treeview/assets/presentation/home/home_page.dart';
+import 'package:tr_treeview/assets/presentation/assets_page/assets_page.dart';
+import 'package:tr_treeview/assets/presentation/home_page/home_page.dart';
 
 abstract class Routes {
   static const home = "/home";
