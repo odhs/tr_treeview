@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:tr_treeview/assets/core/design_system/tractian_colors.dart';
 import 'package:tr_treeview/assets/presentation/assets_page/assets_controller.dart';
+import 'package:tr_treeview/assets/presentation/shared_widgets/treeview_widget/treenode_widget.dart';
 
 class AssetsPage extends StatelessWidget {
   const AssetsPage({super.key});
@@ -30,11 +31,20 @@ class AssetsPage extends StatelessWidget {
           return Center(
             child: controller.isLoading
                 ? const CupertinoActivityIndicator()
-                : const Column(
+                : Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     mainAxisSize: MainAxisSize.max,
-                    children: [],
+                    children: [
+                      ...List.generate(
+                        controller.treeNodeList.length,
+                        (int index) {
+                          return TreeNode(
+                            treeNodeModel: controller.treeNodeList[index],
+                          );
+                        },
+                      )
+                    ],
                   ),
           );
         },
