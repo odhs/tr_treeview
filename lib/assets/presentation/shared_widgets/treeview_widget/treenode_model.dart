@@ -54,7 +54,7 @@ class TreeNodeModel {
   | FreeComponent|    null    |   null   |      1     |    1     |
   +--------------+------------+----------+------------+----------+
   */
-  NodeType getAssetType(
+  static NodeType getAssetType(
       String? parentID, String? locationID, String? sensorType) {
     if (sensorType != null) {
       if (parentID != null || locationID != null) {
