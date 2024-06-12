@@ -10,11 +10,9 @@ import 'package:tr_treeview/assets/presentation/shared_widgets/treeview_widget/t
 
 // Function to build the tree
 List<TreeNodeModel> buildTree(Map<String, dynamic> entityMap) {
-  // Criar nós da árvore e conectá-los
-
   List<TreeNodeModel>? root = [];
 
-  // Função recursiva para construir a árvore a partir de um nó
+  // Recursive function to build the tree from a knot
   Future<TreeNodeModel> buildSubtree(dynamic entity) async {
     List<TreeNodeModel> children = [];
 
@@ -43,7 +41,7 @@ List<TreeNodeModel> buildTree(Map<String, dynamic> entityMap) {
       type = TreeNodeModel.getLocationType(entity.parentId);
     }
 
-    // Retornar um nó com a entidade atual e suas filhas
+    // Return a node with the current entity and its children
     return TreeNodeModel(
         entity: entity, nodeType: type, isCollapsed: true, children: children);
   }
@@ -58,14 +56,18 @@ List<TreeNodeModel> buildTree(Map<String, dynamic> entityMap) {
     }
   });
 
-  for (var child in root) {
-    printTree(child);
+// TODO take out at the end of the project
+  if (kDebugMode) {
+    for (var child in root) {
+      printTree(child);
+    }
   }
 
   return root;
 }
 
 // Print the tree
+// TODO take out at the end of the project
 void printTree(TreeNodeModel node, {int level = 0}) {
   if (kDebugMode) {
     print('${'  ' * level}${node.entity.name} (${node.nodeType})');
@@ -87,17 +89,6 @@ Widget _buildNode(TreeNodeModel node, {int level = 0}) {
   );
 }
 
-Widget _buildTreeWidget(TreeNodeModel node) {
-  return ExpansionTile(
-    onExpansionChanged: (bool expanded) {},
-    controlAffinity: ListTileControlAffinity.leading,
-    key: PageStorageKey<String>(node.entity.id),
-    title: Text(node.entity.name),
-    children:
-        node.children.map<Widget>((child) => _buildTreeWidget(child)).toList(),
-  );
-}
-
 class AssetsController extends GetxController {
   // Loading status
   bool _isloading = false;
@@ -107,13 +98,11 @@ class AssetsController extends GetxController {
   final getLocationsList = Get.find<GetLocationsUsecase>();
   final getAssetsList = Get.find<GetAssetsUsecase>();
 
-  // Get The locations and subLocations
   List<LocationEntity> locationList = [];
-  // Get The Assets, Sub-Assets, Component and Free Components
   List<AssetEntity> assetList = [];
 
-  // Merging Locations with Assets into a single list
-  // No futuro considerar receber da API já numa classe única
+  // To Merging Locations with Assets into a single list
+  // TODO In the future consider receiving from the API already in a single class
   Map<String, dynamic> entityMap = <String, dynamic>{};
 
   List<Widget> treeWidget = [];
@@ -152,7 +141,7 @@ class AssetsController extends GetxController {
     if (kDebugMode) {
       for (var item in locationList) {
         if (item.parentId == null) {}
-        //  print(item.toString());
+        print(item.toString());
       }
     }
 
@@ -183,10 +172,10 @@ class AssetsController extends GetxController {
   }
 
   void loadPageData(int pageIndex) async {
-    // Tamanho da página (número de itens por página)
+    // Page Size
     const int pageSize = 20;
 
-    // Contadores para limitar a iteração
+    // Limit the loop to paginate
     int iterationCount = 0;
     int startIndex = pageIndex * pageSize;
 

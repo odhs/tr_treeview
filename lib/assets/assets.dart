@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:tr_treeview/assets/core/design_system/tractian_colors.dart';
 import 'package:tr_treeview/assets/core/routes.dart';
 
 class Assets extends StatelessWidget {
@@ -14,7 +15,12 @@ class Assets extends StatelessWidget {
       navigatorKey: Get.key,
       navigatorObservers: [GetObserver()],
       title: 'Tractian Assets Explorer',
-      theme: const CupertinoThemeData(brightness: Brightness.light),
+      theme: CupertinoThemeData(
+        brightness: Brightness.light,
+        textTheme: CupertinoTextThemeData(
+          primaryColor: TractianColors.neutralColorsWhite,
+        ),
+      ),
     );
   }
 }
